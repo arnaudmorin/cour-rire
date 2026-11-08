@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://cour-rire.fr/sitemap.xml
