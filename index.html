@@ -618,6 +618,19 @@ main,header,footer,.ribbon,.ticker{padding-left:var(--rail)}
   padding:.2rem .5rem;font:inherit;font-size:.66rem;cursor:pointer;letter-spacing:.08em;
   text-transform:uppercase}
 .copybtn:hover{background:rgba(255,243,230,.16)}
+.legal{margin-top:1.8rem;padding-top:1.1rem;border-top:1px solid var(--hair)}
+.legal summary{cursor:pointer;list-style:none;font-family:var(--ff-m);font-size:.56rem;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--muted);opacity:.8;padding:.15rem 0}
+.legal summary::-webkit-details-marker{display:none}
+.legal summary::after{content:" +";color:var(--gold)}
+.legal[open] summary::after{content:" –"}
+.legal summary:hover{color:var(--gold);opacity:1}
+.legal__in{margin-top:.8rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(224px,1fr));
+  gap:.85rem 2rem;font-size:.7rem;color:var(--muted);line-height:1.5;opacity:.86}
+.legal__in b{display:block;color:#B6ABCC;font-weight:600;font-size:.58rem;letter-spacing:.09em;
+  text-transform:uppercase;margin-bottom:.2rem}
+.legal__in a{color:#B6ABCC;font-size:inherit;text-decoration:underline;text-underline-offset:2px}
+
 .foot__bar{margin-top:2.6rem;padding-top:1.3rem;border-top:1px solid var(--hair);display:flex;
   flex-wrap:wrap;gap:.7rem 1.6rem;justify-content:space-between;font-family:var(--ff-m);
   font-size:.7rem;letter-spacing:.05em;color:var(--muted)}
@@ -895,10 +908,11 @@ main,header,footer,.ribbon,.ticker{padding-left:var(--rail)}
 
     <p class="lede" style="margin-top:1.4rem">
       La deuxième édition de notre backyard, entre Rennes et Saint-Malo, aura lieu les
-      9 et 10 octobre 2027, autour d'un sublime étang breton, avec <b>moins de vingt mètres
-      de dénivelé</b> sur la boucle. Mais la backyard n'est que le fil conducteur&nbsp;:
+      9 et 10 octobre 2027, autour d'un sublime étang breton. Mais la backyard n'est que
+      le fil conducteur&nbsp;:
       <b>trail, courses nature, randonnée et courses enfants</b> remplissent tout le
-      week-end&nbsp;— des 500 mètres du premier dossard à l'ultra de plus de 200 kilomètres.
+      week-end. Des 500 mètres de la course enfant aux plus de 200 kilomètres des finishers
+      de la backyard, il y en a pour tous les goûts et tous les niveaux.
     </p>
 
     <span class="soon">Programme complet dévoilé en <b>février 2027</b></span>
@@ -1483,6 +1497,25 @@ main,header,footer,.ribbon,.ticker{padding-left:var(--rail)}
         </ul>
       </div>
     </div>
+    <details class="legal">
+      <summary>Mentions légales</summary>
+      <div class="legal__in">
+        <p><b>Éditeur du site</b>
+          Association Cour-Rire, association loi 1901.<br>
+          Siège social&nbsp;: Feins (35440), Ille-et-Vilaine, France.<br>
+          RNA&nbsp;: W353025728 · SIRET&nbsp;: 999 490 915 00017</p>
+        <p><b>Directeurs de la publication</b>
+          Kévin Bobon et Nicolas Beillet, co-présidents.<br>
+          Contact&nbsp;: <a href="mailto:asso.cour.rire@gmail.com">asso.cour.rire@gmail.com</a></p>
+        <p><b>Hébergement</b>
+          OVH SAS — 2 rue Kellermann, 59100 Roubaix, France.<br>
+          <a href="https://www.ovhcloud.com/" target="_blank" rel="noopener">ovhcloud.com</a></p>
+        <p><b>Crédits</b>
+          Photographies de l'édition 2026&nbsp;: © Nathan Lemoine.<br>
+          Les contenus de ce site sont la propriété de l'Association Cour-Rire.</p>
+      </div>
+    </details>
+
     <div class="foot__bar">
       <span>© 2026 Association Cour-Rire · Photographies © nathan.l.photographe</span>
       <span id="footCd">9 &amp; 10 octobre 2027</span>
@@ -1831,6 +1864,12 @@ main,header,footer,.ribbon,.ticker{padding-left:var(--rail)}
  ],
  "description": "Un week-end entier de courses autour d'un étang breton, à Feins (Ille-et-Vilaine), entre Rennes et Saint-Malo : une backyard ultra de plus de 200 km sur une boucle officielle de 6,706 km taillée pour la performance, un trail, une course nature, une randonnée et des courses enfants dès 500 m. 2e édition les 9 et 10 octobre 2027, organisée par l'Association Cour-Rire.",
  "sport": "Backyard ultra",
+ "url": "https://www.cour-rire.fr/",
+ "image": [
+  "https://www.cour-rire.fr/img/partage.jpg",
+  "https://www.cour-rire.fr/img/r-trail25.jpg",
+  "https://www.cour-rire.fr/img/hero-nuit.jpg"
+ ],
  "startDate": "2027-10-09",
  "endDate": "2027-10-10",
  "eventStatus": "https://schema.org/EventScheduled",
@@ -1854,31 +1893,61 @@ main,header,footer,.ribbon,.ticker{padding-left:var(--rail)}
   "areaServed": "Bretagne",
   "foundingLocation": "Feins, Ille-et-Vilaine",
   "sameAs": [
-   "https://www.instagram.com/asso.cour_rire/"
-  ]
+   "https://www.instagram.com/asso.cour_rire/",
+   "https://www.facebook.com/share/14x9dAyPpHi/",
+   "https://www.strava.com/clubs/2121056"
+  ],
+  "url": "https://www.cour-rire.fr/",
+  "logo": "https://www.cour-rire.fr/img/icone-512.png"
  },
  "performer": {
   "@type": "PerformingGroup",
   "name": "Coureurs engagés"
- },
- "superEvent": {
-  "@type": "Event",
-  "name": "Week-end Cour-Rire 2027",
-  "startDate": "2027-10-09",
-  "endDate": "2027-10-10",
-  "location": {
-   "@type": "Place",
-   "name": "Étang de Boulet — La Bijouterie",
-   "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Étang de Boulet, lieu-dit La Bijouterie",
-    "addressLocality": "Feins",
-    "postalCode": "35440",
-    "addressRegion": "Bretagne",
-    "addressCountry": "FR"
-   }
-  }
  }
+}
+</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "SportsOrganization",
+ "name": "Association Cour-Rire",
+ "alternateName": "Cour-Rire",
+ "description": "Association sportive de Feins, en Ille-et-Vilaine, organisatrice de Cour-Rire à l'Infini : backyard ultra, trail, course nature, randonnée et courses enfants.",
+ "url": "https://www.cour-rire.fr/",
+ "logo": "https://www.cour-rire.fr/img/icone-512.png",
+ "image": "https://www.cour-rire.fr/img/equipe.jpg",
+ "email": "asso.cour.rire@gmail.com",
+ "slogan": "Une foulée, des sourires.",
+ "areaServed": {
+  "@type": "AdministrativeArea",
+  "name": "Bretagne"
+ },
+ "address": {
+  "@type": "PostalAddress",
+  "addressLocality": "Feins",
+  "postalCode": "35440",
+  "addressRegion": "Bretagne",
+  "addressCountry": "FR"
+ },
+ "sameAs": [
+  "https://www.instagram.com/asso.cour_rire/",
+  "https://www.facebook.com/share/14x9dAyPpHi/",
+  "https://www.strava.com/clubs/2121056"
+ ],
+ "legalName": "Association Cour-Rire",
+ "identifier": [
+  {
+   "@type": "PropertyValue",
+   "propertyID": "RNA",
+   "value": "W353025728"
+  },
+  {
+   "@type": "PropertyValue",
+   "propertyID": "SIRET",
+   "value": "99949091500017"
+  }
+ ],
+ "nonprofitStatus": "https://schema.org/NonprofitType"
 }
 </script>
 <script type="application/ld+json">
