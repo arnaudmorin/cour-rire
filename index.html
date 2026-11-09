@@ -9,6 +9,7 @@
 <meta name="author" content="Association Cour-Rire">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 <meta name="geo.region" content="FR-35"><meta name="geo.placename" content="Feins, Ille-et-Vilaine">
+<meta name="geo.position" content="48.3369;-1.6435"><meta name="ICBM" content="48.3369, -1.6435">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:site_name" content="Cour-Rire à l'Infini">
@@ -27,6 +28,9 @@
 <link rel="icon" type="image/png" href="img/icone-512.png" sizes="512x512">
 <link rel="apple-touch-icon" href="img/icone-180.png">
 <meta name="apple-mobile-web-app-title" content="Cour-Rire">
+<link rel="preload" as="image" href="img/hero-bg.jpg" media="(min-width:700px)" fetchpriority="high">
+<link rel="preload" as="image" href="img/hero-bg-p.jpg" media="(max-width:699px)" fetchpriority="high">
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;700;800;900&family=Caveat:wght@600&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
 
@@ -202,37 +206,34 @@ main,header,footer,.ribbon,.ticker{padding-left:var(--rail)}
 /* ═══ ACCUEIL ═════════════════════════════════════════════════════ */
 .hero{position:relative;overflow:hidden}
 .hero__bg{position:absolute;inset:-8% 0 -8%;z-index:0;will-change:transform}
-.hero__bg img{width:100%;height:100%;object-fit:cover;object-position:50% 46%;opacity:.5;
-  transition:opacity 1s ease}
-.hero__v{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;
-  transition:opacity 1.3s ease}
-.hero__bg.vid img{opacity:0}
-.hero__bg.vid .hero__v{opacity:.64}
-@media (prefers-reduced-motion:reduce){ .hero__v{display:none} }
+.hero__bg picture{display:block;width:100%;height:100%}
+.hero__bg img{width:100%;height:100%;object-fit:cover;object-position:46% 58%;opacity:.86;
+  animation:kbHero 38s ease-in-out infinite alternate;will-change:transform}
+@keyframes kbHero{from{transform:scale(1.005)}to{transform:scale(1.06)}}
+@media (prefers-reduced-motion:reduce){ .hero__bg img{animation:none} }
 .hero__bg::after{content:"";position:absolute;inset:0;background:
-  linear-gradient(90deg,rgba(9,5,25,.66) 0%,rgba(9,5,25,.42) 44%,transparent 76%),
-  radial-gradient(80% 58% at 76% 14%,rgba(240,71,158,.24),transparent 62%),
-  radial-gradient(66% 52% at 10% 6%,rgba(122,77,214,.36),transparent 64%),
-  linear-gradient(180deg,rgba(9,5,25,.72) 0%,rgba(9,5,25,.3) 36%,rgba(9,5,25,.9) 84%,var(--deep) 100%)}
-.pola{width:min(44%,180px);margin:1.5rem 0 .2rem auto;z-index:2;
-  background:#FFF3E6;padding:9px 9px 0;transform:rotate(3.2deg);
-  box-shadow:0 20px 44px -16px rgba(0,0,0,.85),0 0 0 1px rgba(255,243,230,.12)}
-.pola img{width:100%;aspect-ratio:1;object-fit:cover;display:block}
-.pola figcaption{font-family:"Caveat",cursive;font-size:1.18rem;line-height:1.1;
-  color:#2A1A4A;text-align:center;padding:.36rem 0 .44rem}
-@media (min-width:700px){
-  .pola{position:absolute;top:4.4rem;right:max(16px,env(safe-area-inset-right,0px));
-    width:min(26vw,214px);margin:0;padding:10px 10px 0}
-  .hero__title,.hero .lede,.hero__strap{max-width:66%}
+  linear-gradient(90deg,rgba(9,5,25,.86) 0%,rgba(9,5,25,.6) 40%,rgba(9,5,25,.12) 72%,transparent 100%),
+  radial-gradient(78% 56% at 78% 10%,rgba(240,71,158,.16),transparent 64%),
+  radial-gradient(60% 46% at 6% 4%,rgba(122,77,214,.3),transparent 66%),
+  linear-gradient(180deg,rgba(9,5,25,.5) 0%,rgba(9,5,25,.06) 30%,rgba(9,5,25,.24) 58%,rgba(9,5,25,.88) 86%,var(--deep) 100%)}
+/* Sur téléphone la colonne est trop haute pour une photo plein cadre :
+   elle devient une bande en haut, puis le texte repasse sur le fond violet. */
+@media (max-width:699px){
+  .hero__bg{inset:0 0 auto 0;height:min(58vh,470px);
+    -webkit-mask-image:linear-gradient(180deg,#000 0%,#000 56%,rgba(0,0,0,.55) 80%,transparent 100%);
+    mask-image:linear-gradient(180deg,#000 0%,#000 56%,rgba(0,0,0,.55) 80%,transparent 100%)}
+  .hero__bg img{object-position:50% 50%;opacity:.95}
+  .hero__bg::after{background:
+    linear-gradient(180deg,rgba(9,5,25,.5) 0%,rgba(9,5,25,.12) 26%,rgba(9,5,25,.34) 68%,rgba(9,5,25,.5) 100%),
+    radial-gradient(76% 40% at 14% 0%,rgba(122,77,214,.3),transparent 72%)}
 }
-@media (min-width:1040px){
-  .pola{top:4.8rem;width:min(23vw,246px);padding:11px 11px 0}
-  .pola figcaption{font-size:1.32rem;padding:.42rem 0 .5rem}
-  .hero__title,.hero .lede,.hero__strap{max-width:68%}
-}
-@media (min-width:1560px){ .pola{width:min(20vw,276px)} }
+@media (min-width:700px){ .hero__title,.hero .lede,.hero__strap{max-width:66%} }
+@media (min-width:1040px){ .hero__title,.hero .lede,.hero__strap{max-width:68%} }
 .hero__in{position:relative;z-index:1;
-  padding-block:clamp(2.4rem,5.4vw,4.2rem) clamp(2.4rem,4.4vw,3.6rem)}
+  padding-block:clamp(2.4rem,5.4vw,4.2rem) clamp(2.4rem,4.4vw,3.6rem);
+  text-shadow:0 2px 18px rgba(9,5,25,.72),0 1px 3px rgba(9,5,25,.6)}
+.hero__in .btn{text-shadow:none}
+.hero .lede{max-width:54ch;color:#E6DDF2}
 
 .byline{display:flex;align-items:center;gap:.8rem;flex-wrap:wrap;font-family:var(--ff-m);
   font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
@@ -527,7 +528,7 @@ main,header,footer,.ribbon,.ticker{padding-left:var(--rail)}
   transition:transform .9s cubic-bezier(.2,.7,.3,1)}
 .assoc figure:hover img{transform:scale(1.04)}
 .assoc .big{font-family:var(--ff-d);font-weight:800;text-transform:uppercase;line-height:.9;
-  font-size:clamp(2rem,4.6vw,3.2rem);margin-bottom:1rem}
+  font-size:clamp(2rem,4.6vw,3.2rem);margin:0 0 1rem;color:var(--cream)}
 .assoc p + p{margin-top:.9rem}
 .assoc .sig{display:flex;align-items:center;gap:.9rem;margin-top:1.6rem;padding-top:1.2rem;
   border-top:1px solid var(--hair)}
@@ -709,8 +710,13 @@ main,header,footer,.ribbon,.ticker{padding-left:var(--rail)}
 .pano__img{animation:kb 30s ease-in-out infinite alternate;will-change:transform}
 @keyframes kb{from{transform:scale(1.015)}to{transform:scale(1.09)}}
 @media (prefers-reduced-motion:reduce){ .pano__img{animation:none} }
-.pano--v{background:#0A0620 url("img/etang.jpg") center/cover no-repeat}
-.pano--v .pano__v{opacity:0;transition:opacity 1.2s ease}
+/* le coureur est haut dans le cadre : on cale la fenêtre vers le haut
+   pour ne jamais lui couper la tête sur les écrans larges */
+/* pas de filet clair sur le bandeau de nuit : sur une image presque noire
+   il se voit comme une ligne lumineuse */
+.pano--v{background:#0A0620 url("img/nuit-poster.jpg") 50% 16%/cover no-repeat;
+  border-block-color:transparent}
+.pano--v .pano__v{opacity:0;transition:opacity 1.2s ease;object-position:50% 16%}
 .pano--v .pano__v.on{opacity:1}
 @media (prefers-reduced-motion:reduce){ .pano--v .pano__v{display:none} }
 @media (max-width:700px){
@@ -887,9 +893,10 @@ main,header,footer,.ribbon,.ticker{padding-left:var(--rail)}
 <main>
 <header class="hero" id="accueil">
   <div class="hero__bg" id="heroBg">
-    <img src="img/hero-nuit.jpg" alt="" fetchpriority="high">
-    <video class="hero__v" muted loop playsinline preload="none" aria-hidden="true"
-           tabindex="-1" poster="img/hero-nuit.jpg"></video>
+    <picture>
+      <source media="(max-width:699px)" srcset="img/hero-bg-p.jpg" width="860" height="1035">
+      <img src="img/hero-bg.jpg" alt="" width="1900" height="1425" fetchpriority="high">
+    </picture>
   </div>
   <div class="wrap hero__in" id="contenu">
 
@@ -916,11 +923,6 @@ main,header,footer,.ribbon,.ticker{padding-left:var(--rail)}
     </p>
 
     <span class="soon">Programme complet dévoilé en <b>février 2027</b></span>
-
-    <figure class="pola">
-      <img src="img/pola-nuit.jpg" alt="Des coureurs à la frontale au cœur de la nuit, édition 2026" loading="lazy">
-      <figcaption>la nuit du samedi</figcaption>
-    </figure>
 
     <div class="hero__strap">
       <span class="dt">9 &amp; 10 octobre 2027</span>
@@ -996,12 +998,12 @@ main,header,footer,.ribbon,.ticker{padding-left:var(--rail)}
     </div>
 
     <div class="shots rv">
-      <figure><img src="img/p-rive.jpg" alt="Le single qui serpente entre la forêt et l'étang" loading="lazy">
+      <figure><img src="img/p-groupe.jpg" alt="Un groupe de coureurs souriants sur le single en sous-bois" loading="lazy">
         <figcaption>Le single, entre forêt et étang</figcaption></figure>
-      <figure><img src="img/nuit.jpg" alt="Des coureurs à la frontale sur le chemin, au cœur de la nuit" loading="lazy">
+      <figure><img src="img/p-lac.jpg" alt="Un coureur longeant l'étang de Boulet en plein jour" loading="lazy">
+        <figcaption>Au bord de l'eau, presque tout le tour</figcaption></figure>
+      <figure><img src="img/p-nuit.jpg" alt="La file des frontales dans la nuit sur le parcours" loading="lazy">
         <figcaption>De nuit, à la frontale, pendant des heures</figcaption></figure>
-      <figure><img src="img/p-nuitarche.jpg" alt="Le passage sous l'arche à la frontale, de nuit" loading="lazy">
-        <figcaption>Le passage sous l'arche, à la frontale</figcaption></figure>
     </div>
   </div>
 
@@ -1036,12 +1038,12 @@ main,header,footer,.ribbon,.ticker{padding-left:var(--rail)}
     </div>
   </div>
 
-  <section class="pano pano--v" aria-label="L'étang de Boulet au petit matin">
-    <video class="pano__v" muted loop playsinline preload="none" poster="img/etang.jpg"
-           aria-hidden="true" tabindex="-1" data-src="img/aube.mp4"></video>
+  <section class="pano pano--v" aria-label="La nuit sur l'étang de Boulet">
+    <video class="pano__v" muted loop playsinline preload="none" poster="img/nuit-poster.jpg"
+           aria-hidden="true" tabindex="-1" data-src="img/nuit.mp4"></video>
     <div class="wrap pano__in">
-      <span class="pano__k">Étang de Boulet · Feins, Ille-et-Vilaine</span>
-      <p class="pano__big">Vous ne courrez<br>pas <em>n'importe où</em>.</p>
+      <span class="pano__k">Samedi soir · la nuit tombe sur l'étang</span>
+      <p class="pano__big">C'est là que<br>tout <em>se joue</em>.</p>
     </div>
   </section>
 </section>
@@ -1272,7 +1274,7 @@ main,header,footer,.ribbon,.ticker{padding-left:var(--rail)}
         alt="Toute l'équipe de bénévoles de l'Association Cour-Rire devant la salle, édition 2026" loading="lazy"></figure>
       <div class="rv" style="max-width:74ch">
         <span class="eyebrow" style="margin-bottom:1rem">Un événement créé par Cour-Rire</span>
-        <p class="big">Une association<br>de Feins</p>
+        <h2 class="big">Une association<br>de Feins</h2>
         <p style="color:#CCC2DE">
           Cour-Rire est née de l'envie de mettre en mouvement les grands et les petits,
           et de proposer un événement sportif qualitatif, ambitieux et ouvert à tous.
@@ -1597,17 +1599,6 @@ main,header,footer,.ribbon,.ticker{padding-left:var(--rail)}
     var pr = v.play(); if (pr && pr.catch) pr.catch(function () {});
   }
 
-  /* le hero : on laisse la photo s'afficher, la vidéo prend le relais */
-  var hv = document.querySelector(".hero__v"), hb = document.getElementById("heroBg");
-  if (hv && hb) {
-    var startHero = function () {
-      wake(hv, phone ? "img/hero-p.mp4" : "img/hero.mp4",
-           function () { hb.classList.add("vid"); });
-    };
-    if (document.readyState === "complete") setTimeout(startHero, 400);
-    else window.addEventListener("load", function () { setTimeout(startHero, 400); });
-  }
-
   /* les bandes : on ne télécharge qu'à l'approche */
   var lazyV = document.querySelectorAll("video[data-src]");
   if (lazyV.length) {
@@ -1648,11 +1639,12 @@ main,header,footer,.ribbon,.ticker{padding-left:var(--rail)}
   /* ── bande photo défilante ─────────────────────────────────── */
   var strip = document.getElementById("strip");
   if (strip) {
-    var shots = ["g-depart","s-coureur","p-etang","r-backyard","g-village","nuit",
-                 "aube-v","b-ravito","g-polaroid","r-enfants","p-foret","finishers",
-                 "g-deguise","b-buvette","p-chemin","benevoles","r-rando","g-arche",
-                 "p-single","b-salle","pod-trail","r-trail25","b-chateau","r-dossard",
-                 "p-nuitarche","r-boucle","b-barnums","equipe","coprez"];
+    var shots = ["g-depart","s-copains","p-etang","r-backyard","s-boue","g-village",
+                 "nuit","s-pont","aube-v","b-ravito","s-rose","g-polaroid","r-enfants",
+                 "p-foret","finishers","s-deguis","g-deguise","b-buvette","p-chemin",
+                 "benevoles","s-depart","r-rando","g-arche","p-single","b-salle",
+                 "pod-trail","r-trail25","b-chateau","r-dossard","p-nuitarche","p-lac",
+                 "r-boucle","b-barnums","equipe","coprez"];
     var h = "";
     for (var r = 0; r < 2; r++)
       for (var i = 0; i < shots.length; i++)
@@ -1868,7 +1860,7 @@ main,header,footer,.ribbon,.ticker{padding-left:var(--rail)}
  "image": [
   "https://www.cour-rire.fr/img/partage.jpg",
   "https://www.cour-rire.fr/img/r-trail25.jpg",
-  "https://www.cour-rire.fr/img/hero-nuit.jpg"
+  "https://www.cour-rire.fr/img/hero-bg.jpg"
  ],
  "startDate": "2027-10-09",
  "endDate": "2027-10-10",
@@ -1884,8 +1876,28 @@ main,header,footer,.ribbon,.ticker{padding-left:var(--rail)}
    "postalCode": "35440",
    "addressRegion": "Bretagne",
    "addressCountry": "FR"
+  },
+  "geo": {
+   "@type": "GeoCoordinates",
+   "latitude": 48.3369,
+   "longitude": -1.6435
   }
  },
+ "subEvent": [
+  {"@type": "SportsEvent", "name": "Cour-Rire à l'Infini — backyard ultra en solo",
+   "sport": "Backyard ultra", "startDate": "2027-10-09",
+   "description": "Boucle officielle de 6,706 km à répéter au début de chaque heure, à élimination, jusqu'à un nombre d'heures maximum fixé par l'organisation. Record de la maison : 30 boucles, 201 km."},
+  {"@type": "SportsEvent", "name": "Cour-Rire à Deux — backyard ultra en duo",
+   "sport": "Backyard ultra", "startDate": "2027-10-09"},
+  {"@type": "SportsEvent", "name": "Cour-Rire Ensemble — backyard ultra en équipe",
+   "sport": "Backyard ultra", "startDate": "2027-10-09"},
+  {"@type": "SportsEvent", "name": "Cour-Rire le Trail",
+   "sport": "Trail", "startDate": "2027-10-10"},
+  {"@type": "SportsEvent", "name": "Cour-Rire la Rando — randonnée pédestre sans chrono",
+   "sport": "Randonnée pédestre", "startDate": "2027-10-10"},
+  {"@type": "SportsEvent", "name": "Cour-Rire les Enfants — courses enfants dès 500 m",
+   "sport": "Course à pied", "startDate": "2027-10-10"}
+ ],
  "organizer": {
   "@type": "SportsOrganization",
   "name": "Association Cour-Rire",
